@@ -6,25 +6,26 @@
   </div>
   <div>
     <div>My todo list:</div>
-    <ul>
-      <li v-for="(item, itemIndex) in toDoList" :key="itemIndex">
-        {{ item }}
-      </li>
-    </ul>
+    <ListItem :itemProp="toDoListArr" />
   </div>
 </template>
 
 <script>
+import ListItem from "./ListItem.vue";
+
 export default {
+  components: {
+    ListItem,
+  },
   data() {
     return {
-      toDoList: [],
+      toDoListArr: [],
       value: undefined,
     };
   },
   methods: {
     addToDo() {
-      this.toDoList.push(this.value);
+      this.toDoListArr.push(this.value);
       this.value = undefined;
     },
   },
