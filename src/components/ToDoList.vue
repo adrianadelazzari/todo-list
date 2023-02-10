@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <div>Add a todo:</div>
+  <div class="container">
+    <div class="header">Add a todo:</div>
     <input type="text" v-model="value" />
-    <button @click="addToDo">Add</button>
-  </div>
-  <div>
-    <div>My todo list:</div>
+    <button class="addBtn" @click="addToDo">Add</button>
+    <div class="header">My todo list:</div>
     <ListItem :itemProp="toDoListArr" @deleteItem="removeToDo" />
+    <button class="deleteAllBtn" @click="removeAll">Delete All</button>
   </div>
-  <button @click="removeAll">Delete All</button>
 </template>
 
 <script>
@@ -29,8 +27,8 @@ export default {
       this.toDoListArr.push(this.value);
       this.value = undefined;
     },
-    removeToDo(itemProp){
-      this.toDoListArr.splice(this.toDoListArr.indexOf(itemProp), 1)
+    removeToDo(itemProp) {
+      this.toDoListArr.splice(this.toDoListArr.indexOf(itemProp), 1);
     },
     removeAll() {
       this.toDoListArr = [];
@@ -38,3 +36,50 @@ export default {
   },
 };
 </script>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+.container {
+  padding: 40px;
+  text-align: center;
+  background-color:hsla(120, 100%, 25%, 0.3)
+}
+.header {
+  padding: 30px;
+  text-align: center;
+  font-size: large;
+  font-weight: bold;
+}
+input{
+  padding: 10px;
+  width: 25%;
+  font-size: 15px;
+  transition: 0.3s;
+  border-radius: 0;
+  background-color: azure;
+}
+.addBtn {
+  padding: 10px;
+  width: 5%;
+  background: green;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+.deleteAllBtn {
+  padding: 10px;
+  width: 10%;
+  background: red;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+</style>
