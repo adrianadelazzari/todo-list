@@ -8,6 +8,7 @@
     <div>My todo list:</div>
     <ListItem :itemProp="toDoListArr" />
   </div>
+  <button @click="removeList">Empty List</button>
 </template>
 
 <script>
@@ -27,6 +28,9 @@ export default {
     addToDo() {
       this.toDoListArr.push(this.value);
       this.value = undefined;
+    },
+    removeList() {
+      this.toDoListArr = [];
     },
   },
 };
