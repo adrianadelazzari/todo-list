@@ -2,6 +2,7 @@
   <ul>
     <li v-for="(item, itemIndex) in itemProp" :key="itemIndex">
       {{ item }}
+      <button @click="deleteItem">Delete</button>
     </li>
   </ul>
 </template>
@@ -12,6 +13,11 @@ export default {
     itemProp: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    deleteItem() {
+      this.$emit("deleteItem", this.item);
     },
   },
 };

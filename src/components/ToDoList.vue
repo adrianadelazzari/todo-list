@@ -6,9 +6,9 @@
   </div>
   <div>
     <div>My todo list:</div>
-    <ListItem :itemProp="toDoListArr" />
+    <ListItem :itemProp="toDoListArr" @deleteItem="removeToDo" />
   </div>
-  <button @click="removeList">Empty List</button>
+  <button @click="removeAll">Delete All</button>
 </template>
 
 <script>
@@ -29,7 +29,10 @@ export default {
       this.toDoListArr.push(this.value);
       this.value = undefined;
     },
-    removeList() {
+    removeToDo(itemProp){
+      this.toDoListArr.splice(this.toDoListArr.indexOf(itemProp), 1)
+    },
+    removeAll() {
       this.toDoListArr = [];
     },
   },
